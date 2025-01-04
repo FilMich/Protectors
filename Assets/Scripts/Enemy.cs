@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 10f;
 
     private Transform target;
-    private int indexOfWavepoint = 0;
+    private int indexOfWaypoint = 0;
     
     void Start()
     {
@@ -22,13 +22,13 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f) {
 
-            if (indexOfWavepoint >= WayPoints.waypoints.Length -1) { 
+            if (indexOfWaypoint >= WayPoints.waypoints.Length -1) { 
                 Destroy(gameObject);
                 return;
             }
 
-            indexOfWavepoint++;
-            target = WayPoints.waypoints[indexOfWavepoint];
+			indexOfWaypoint++;
+            target = WayPoints.waypoints[indexOfWaypoint];
 
 		}
     }
