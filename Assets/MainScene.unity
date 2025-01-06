@@ -7381,7 +7381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61763dfb12e3c9468a02958e6067fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 5940757097501765704, guid: 7f70eaa588fcd2f4c815b1553d96409b, type: 3}
+  canvasTransform: {fileID: 222368077}
+  currentPopup: {fileID: 0}
+  defaultTurretPrefab: {fileID: 5940757097501765704, guid: 7f70eaa588fcd2f4c815b1553d96409b, type: 3}
+  advancedTurretPrefab: {fileID: 0}
 --- !u!4 &769055593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5715220124212719413, guid: 5795f9a1daf9c184d9fbaf759488cd9c, type: 3}
@@ -17947,7 +17950,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 758780184}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
@@ -17958,3 +17960,4 @@ SceneRoots:
   - {fileID: 813893696}
   - {fileID: 222368077}
   - {fileID: 960549448}
+  - {fileID: 758780184}
