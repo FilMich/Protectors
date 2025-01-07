@@ -16,6 +16,7 @@ public class Node : MonoBehaviour
 	private Color startColor;
 	private GameObject turret;         // Tracks the turret on this node
 	private BuildManager buildManager;
+	private CoinManager coinManager;
 
 	void Start()
 	{
@@ -24,9 +25,14 @@ public class Node : MonoBehaviour
 
 		// Get reference to the BuildManager instance
 		buildManager = BuildManager.instance;
+		coinManager = CoinManager.instance;
 		if (buildManager == null)
 		{
 			Debug.LogError("BuildManager instance not found!");
+		}
+		if (coinManager == null)
+		{
+			Debug.LogError("CoinManager instance not found!");
 		}
 	}
 
@@ -88,8 +94,21 @@ public class Node : MonoBehaviour
 			return;
 		}
 
-		turret = Instantiate(turretToBuild, transform.position, Quaternion.identity);
-		Debug.Log($"Turret {turretType} built successfully at {transform.position}");
+		int turretCost = turretToBuild.GetComponent<Turret>().cost;
+
+		if (CoinManager.instance.SpendCoins(turretCost))
+		{
+			// Place the turret
+			turret = Instantiate(turretToBuild, transform.position, Quaternion.identity);
+			Debug.Log($"Turret {turretType} built successfully at {transform.position}");
+		}
+		else
+		{
+			Debug.LogError($"Not enough coins to build turret: {turretType}");
+		}
+
+		//turret = Instantiate(turretToBuild, transform.position, Quaternion.identity);
+		//Debug.Log($"Turret {turretType} built successfully at {transform.position}");
 
 		// Close the popup
 		if (buildManager.currentPopup != null)
@@ -144,7 +163,7 @@ public class Node : MonoBehaviour
 		Turret turretComponent = turret.GetComponent<Turret>();
 		int sellValue = turretComponent != null ? turretComponent.cost / 2 : 0;
 
-		CoinManager.instance.AddCoins(sellValue);
+		coinManager.AddCoins(sellValue);
 		Debug.Log($"Sold turret for {sellValue} coins.");
 
 		Destroy(turret);
@@ -173,7 +192,7 @@ public class Node : MonoBehaviour
 			return;
 		}
 
-		if (CoinManager.instance.SpendCoins(turretComponent.upgradeCost))
+		if (coinManager.SpendCoins(turretComponent.upgradeCost))
 		{
 			// Destroy the current turret and replace it with the upgraded one
 			Vector3 position = turret.transform.position;

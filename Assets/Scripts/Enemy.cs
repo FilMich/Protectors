@@ -8,10 +8,16 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
     private int indexOfWaypoint = 0;
-    
-    void Start()
+
+	public int maxHealth = 100; // Maximum health
+	private int currentHealth;
+
+	public int coinValue = 10; // Coins awarded when killed
+
+	void Start()
     {
-        target = WayPoints.waypoints[0];
+		currentHealth = maxHealth;
+		target = WayPoints.waypoints[0];
     }
 
     // Update is called once per frame
@@ -32,4 +38,29 @@ public class Enemy : MonoBehaviour
 
 		}
     }
+
+	public void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+		UpdateHealthBar();
+
+		if (currentHealth <= 0)
+		{
+			Debug.Log("Enemy killed");
+			CoinManager.instance.AddCoins(coinValue);
+			Debug.Log("Coins should be added");
+			Destroy(gameObject);
+		}
+	}
+
+	private void UpdateHealthBar()
+	{
+		// Notify the health bar to update (to be implemented in Step 2)
+		EnemyHealthBar healthBar = GetComponentInChildren<EnemyHealthBar>();
+		if (healthBar != null)
+		{
+			healthBar.UpdateHealthBar(currentHealth, maxHealth);
+		}
+	}
+
 }

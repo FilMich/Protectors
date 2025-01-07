@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
 	[Header("Turret Prefabs")]
 	public GameObject defaultTurretPrefab; // Default turret prefab
 	public GameObject advancedTurretPrefab; // Optional advanced turret prefab
+	public GameObject magicTurretPrefab; // Optional advanced turret prefab
 
 	private Dictionary<string, GameObject> turretPrefabs; // Dictionary to store turret types
 
@@ -33,7 +34,8 @@ public class BuildManager : MonoBehaviour
 		turretPrefabs = new Dictionary<string, GameObject>
 		{
 			{ "BasicTurret", defaultTurretPrefab },
-			{ "AdvancedTurret", advancedTurretPrefab }
+			{ "AdvancedTurret", advancedTurretPrefab },
+			{ "MagicTurret", magicTurretPrefab }
 		};
 
 		Debug.Log("Turret prefabs initialized.");

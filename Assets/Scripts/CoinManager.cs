@@ -1,10 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
 	public static CoinManager instance;
 
-	public int startingCoins = 100; // Starting balance
+	[Header("Coin Settings")]
+	public int startingCoins = 100;
+
+	[Header("UI References")]
+	public TextMeshProUGUI coinText;
+
 	private int currentCoins;
 
 	private void Awake()
@@ -17,6 +23,7 @@ public class CoinManager : MonoBehaviour
 		instance = this;
 		currentCoins = startingCoins;
 		Debug.Log($"Starting coins: {currentCoins}");
+		UpdateCoinUI();
 	}
 
 	public bool SpendCoins(int amount)
@@ -25,6 +32,7 @@ public class CoinManager : MonoBehaviour
 		{
 			currentCoins -= amount;
 			Debug.Log($"Spent {amount} coins. Remaining coins: {currentCoins}");
+			UpdateCoinUI();
 			return true;
 		}
 		Debug.LogError("Not enough coins!");
@@ -35,10 +43,23 @@ public class CoinManager : MonoBehaviour
 	{
 		currentCoins += amount;
 		Debug.Log($"Added {amount} coins. Total coins: {currentCoins}");
+		UpdateCoinUI();
 	}
 
 	public int GetCoins()
 	{
 		return currentCoins;
 	}
+	private void UpdateCoinUI()
+	{
+		if (coinText != null)
+		{
+			coinText.text = $"Coins: {currentCoins}";
+		}
+		else
+		{
+			Debug.LogError("Coin Text UI is not assigned!");
+		}
+	}
+
 }
