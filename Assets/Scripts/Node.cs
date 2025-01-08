@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -38,23 +39,31 @@ public class Node : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		Debug.Log("Node clicked!");
-
-		if (turret != null)
+		if (!IsPointerOverUIElement()) 
 		{
-			ShowUpgradeSellPopup();
-			Debug.Log("Node already has a turret.");
+			Debug.Log("Node clicked!");
+
+			if (turret != null)
+			{
+				ShowUpgradeSellPopup();
+				Debug.Log("Node already has a turret.");
+				return;
+			}
+
+			ShowPopup();
+		}
+		else
+		{
 			return;
 		}
-
-		ShowPopup();
 	}
 
 	private void ShowPopup()
 	{
-		if (buildManager.currentPopup != null)
+		if (buildManager.currentPopup != null || buildManager.currentPopup == popupUIprefab)
 		{
 			Destroy(buildManager.currentPopup); // Close any existing popup
+			return;
 		}
 
 		GameObject popup = Instantiate(popupUIprefab, buildManager.canvasTransform);
@@ -84,7 +93,7 @@ public class Node : MonoBehaviour
 		if (buildManager == null)
 		{
 			Debug.LogError("BuildManager is null!");
-			return;
+			//return;
 		}
 
 		GameObject turretToBuild = buildManager.GetTurretPrefab(turretType);
@@ -120,10 +129,12 @@ public class Node : MonoBehaviour
 
 	private void ShowUpgradeSellPopup()
 	{
-		if (buildManager.currentPopup != null)
+		
+		if (buildManager.currentPopup != null || buildManager.currentPopup == upgradeSellPopupUIprefab)
 		{
 			Debug.Log("Destroying existing popup.");
 			Destroy(buildManager.currentPopup); // Close any existing popup
+			//return;
 		}
 
 		Debug.Log("Creating upgrade/sell popup.");
@@ -224,5 +235,10 @@ public class Node : MonoBehaviour
 	private void OnMouseExit()
 	{
 		rend.material.color = startColor;
+	}
+
+	private bool IsPointerOverUIElement()
+	{
+		return EventSystem.current.IsPointerOverGameObject(); // Returns true if over UI
 	}
 }

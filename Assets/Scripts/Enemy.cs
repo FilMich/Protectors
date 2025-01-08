@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Enemy : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,6 +17,7 @@ public class Enemy : MonoBehaviour
     {
 		currentHealth = maxHealth;
 		target = WayPoints.waypoints[0];
+		UpdateHealthBar();
     }
 
     // Update is called once per frame

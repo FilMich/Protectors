@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 1383201852524569817}
   - component: {fileID: 7425114874126621477}
   - component: {fileID: 6098634084042701882}
-  - component: {fileID: -7835414114332670952}
   m_Layer: 0
   m_Name: AdvancedTurret
   m_TagString: Untagged
@@ -154,24 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514fef7c0b25f7e4998efcd00ddcffd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 10
+  upgradeCost: 20
+  upgradedPrefab: {fileID: 5940757097501765704, guid: 23aab8e3f1c61db4ba3a5b8cb163ea1c, type: 3}
   target: {fileID: 0}
   range: 15
   speed: 1
   enemyTag: enemy
   bullet: {fileID: 8770967910944636748, guid: 17a3811b60049164aafc7381f11bab7e, type: 3}
   bulletStart: {fileID: 975480899330159631}
---- !u!114 &-7835414114332670952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5940757097501765704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20f72f54c2af724e9f736d841ee94fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 100
-  upgradeCost: 150
-  upgradedPrefab: {fileID: 5940757097501765704, guid: 23aab8e3f1c61db4ba3a5b8cb163ea1c, type: 3}

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2824168706804344365}
   - component: {fileID: 2475369841466353479}
-  - component: {fileID: 1343609897372569537}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -90,19 +89,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1343609897372569537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233477879893779816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942e2cc3ee2a4c74dbd00f5e01d84b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
 --- !u!1 &2171167875353702787
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +102,7 @@ GameObject:
   - component: {fileID: 4944603059157536934}
   - component: {fileID: 2516062866993214721}
   - component: {fileID: 4233139181444691117}
+  - component: {fileID: 2348999057218953051}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -228,6 +215,19 @@ MonoBehaviour:
   speed: 10
   maxHealth: 100
   coinValue: 10
+--- !u!114 &2348999057218953051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171167875353702787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942e2cc3ee2a4c74dbd00f5e01d84b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 2475369841466353479}
 --- !u!1 &3426816009219966897
 GameObject:
   m_ObjectHideFlags: 0
