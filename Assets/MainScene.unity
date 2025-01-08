@@ -7334,6 +7334,7 @@ GameObject:
   - component: {fileID: 758780183}
   - component: {fileID: 758780185}
   - component: {fileID: 758780186}
+  - component: {fileID: 758780187}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -7402,6 +7403,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingCoins: 100
   coinText: {fileID: 861687162}
+--- !u!114 &758780187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758780182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942e2cc3ee2a4c74dbd00f5e01d84b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
 --- !u!4 &769055593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5715220124212719413, guid: 5795f9a1daf9c184d9fbaf759488cd9c, type: 3}
@@ -9086,6 +9100,7 @@ GameObject:
   - component: {fileID: 960549448}
   - component: {fileID: 960549447}
   - component: {fileID: 960549446}
+  - component: {fileID: 960549449}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -9154,6 +9169,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &960549449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960549445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd52b10ce1fe6941afafe0785a93e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &960835308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5715220124212719413, guid: 5795f9a1daf9c184d9fbaf759488cd9c, type: 3}
